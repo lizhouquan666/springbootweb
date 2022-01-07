@@ -4,7 +4,7 @@ layui.use(['table'], function () {
 
 
     page({});
-    //监听单元格事件
+    //监听单元格事件11
     table.on('tool(demo)', function (obj) {
         var data = obj.data;
         if (obj.event === 'del') {
