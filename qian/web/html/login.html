@@ -1,0 +1,56 @@
+<!doctype html>
+<html class="x-admin-sm">
+<head>
+    <meta charset="UTF-8">
+    <title>后台登录-X-admin2.2</title>
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi"/>
+    <meta http-equiv="Cache-Control" content="no-s   iteapp"/>
+    <link rel="stylesheet" type="text/css" href="../css/font.css">
+    <link rel="stylesheet" type="text/css" href="../css/login.css">
+    <link rel="stylesheet" type="text/css" href="../css/xadmin.css">
+<!--    <link rel="stylesheet" type="text/css" href="../X-admin/lib/layui/css/layui.css">-->
+    <script src="../js/jquery.min.js"></script>
+    <script src="../X-admin/lib/layui/layui.js" charset="utf-8"></script>
+    <script src="../js/login.js"></script>
+
+
+
+</head>
+<body class="login-bg">
+
+<div class="login layui-anim layui-anim-up">
+    <div class="message">x-admin2.0-管理登录</div>
+    <div id="darkbannerwrap"></div>
+
+    <!-- method="post" 就是提交后台时 对应后台的方法
+      action="/login" 对应后台的webServlet的注解 地址
+      form 表单自带由验证，需要提供 required属性
+      pattern 就是验证输入的格式是否正确
+      -->
+    <form class="layui-form">
+        <!--        需要弹出一个提示，自己定义：用户名只能输入：以字母开头的后面跟5到15个字母，数字，下划线required pattern="^[a-zA-Z]\w{5,15}$"-->
+        <input name="username" id="username" placeholder="用户名" type="text" lay-verify="username"
+               class="layui-input">
+        <hr class="hr15">
+        <input name="password" lay-verify="password" placeholder="密码" type="password"
+               pattern="^[a-zA-Z]\w{5,15}$" class="layui-input">
+        <hr class="hr15">
+        <div style="display: flex;justify-content: space-between;align-items: center">
+            <input name="code" lay-verify="code" placeholder="验证码" type="text"
+                   class="layui-input">
+            <img src="http://localhost:8080/code/checkCode" onclick="freshCode(this)" width="80" height="30" alt="验证码" title="点击可以刷新">
+        </div>
+        <hr class="hr15">
+        <input value="登录" lay-submit lay-filter="login" style="width:100%;" type="submit">
+        <hr class="hr20">
+
+    </form>
+
+</div>
+
+
+</body>
+</html>

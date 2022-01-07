@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html class="x-admin-sm">
+    <head>
+        <meta charset="UTF-8">
+        <title>欢迎页面-X-admin2.2</title>
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+        <link rel="stylesheet" href="/X-admin/css/font.css">
+        <link rel="stylesheet" href="/X-admin/css/xadmin.css">
+        <script type="text/javascript" src="/X-admin/lib/layui/layui.js" charset="utf-8"></script>
+        <script type="text/javascript" src="/X-admin/js/xadmin.js"></script>
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/myAjax.js"></script>
+        <script src="/js/product-edit.js"></script>
+
+
+    </head>
+    <body>
+    <div class="layui-fluid">
+        <div class="layui-row">
+            <form class="layui-form">
+<!--                律师服务产品名称name-->
+                <div class="layui-form-item">
+                    <label for="name" class="layui-form-label">
+                        <span class="x-red">*</span>律师服务产品名称</label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="name" name="name"  required="" lay-verify="name"
+                               autocomplete="off"
+                               class="layui-input"></div>
+                    <div class="layui-form-mid layui-word-aux">
+                        <label for="name">
+                            <span class="x-red">*</span>律师服务产品名称</label>
+                    </div>
+                </div>
+<!--                价格price-->
+                <div class="layui-form-item">
+                    <label for="price" class="layui-form-label">
+                        <span class="x-red">*</span>价格</label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="price" name="price" required=""  lay-verify="price" autocomplete="off"
+                               class="layui-input"></div>
+                    <div class="layui-form-mid layui-word-aux">
+                        <span class="x-red">*</span>
+                    </div>
+                </div>
+<!--                正常价normalPrice-->
+                <div class="layui-form-item">
+                    <label for="normalPrice" class="layui-form-label">
+                        <span class="x-red">*</span>正常价</label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="normalPrice" name="normalPrice" required=""  lay-verify="normalPrice" autocomplete="off"
+                               class="layui-input"></div>
+                    <div class="layui-form-mid layui-word-aux">
+                        <span class="x-red">*</span>
+                    </div>
+                </div>
+<!--                律师服务类型-->
+                <div class="layui-form-item">
+                    <label for="serviceTypeName" class="layui-form-label">
+                        <span class="x-red">*</span>律师服务类型</label>
+                    <div class="layui-input-inline">
+                        <select name="serviceTypeName" lay-filter="serviceTypeName" id="serviceTypeName">
+                            <option value=""></option>
+                            <option value="1">诉讼、仲裁法律服务</option>
+                            <option value="2">公司法律服务</option>
+                            <option value="3">金融资本法律服务</option>
+                            <option value="4">知识产权法律事务</option>
+                            <option value="5">国际法律事务</option>
+                            <option value="6">特色法律服务</option>
+                        </select>
+                    </div>
+                </div>
+<!--                详细描述-->
+                <div class="layui-form-item">
+                    <label class="layui-form-label">
+                        <span class="x-red">*</span>法律服务产品描述</label>
+                    <div class="layui-input-inline">
+                        <div class="layui-upload" style="width: 500px">
+                            <textarea id="demo" name="content"; style="display: none;"></textarea>
+                        </div>
+                    </div>
+
+                </div>
+<!--                产品图片-->
+                <div class="layui-form-item">
+                    <label class="layui-form-label">
+                        <span class="x-red">*</span>法律服务产品图片</label>
+                    <div class="layui-input-inline">
+                        <div class="layui-upload">
+                            <button type="button" class="layui-btn" id="test1">上传图片</button>
+                            <div class="layui-upload-list">
+                                <img class="layui-upload-img" id="demo1" width="100" height="100">
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+<!--                是否启用-->
+                <div class="layui-form-item">
+                    <label class="layui-form-label">
+                        <span class="x-red">*</span>状态</label>
+                    <div class="layui-input-inline">
+                        <input type="radio" name="enable" value="1" title="启用">
+                        <input type="radio" name="enable" value="0" title="停用">
+                        <input type="radio" name="enable" value="-1" title="禁用">
+                    </div>
+                </div>
+<!--                重置-->
+                <div class="layui-form-item">
+
+                    <button class="layui-btn" lay-filter="update" lay-submit="">修改</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </form>
+        </div>
+    </div>
+        <script>var _hmt = _hmt || []; (function() {
+                var hm = document.createElement("script");
+                hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hm, s);
+            })();</script>
+    </body>
+
+</html>
