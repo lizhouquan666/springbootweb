@@ -76,10 +76,10 @@
                         <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
                         <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
                     </script>
-                    <!--                            <script type="text/html" id="enable">-->
-                    <!--                                &lt;!&ndash; 这里的checked的状态只是演示 &ndash;&gt;-->
-                    <!--                                <div name = "enable" value = "{{d.enable}}" lay-skin = "switch" lay-text = "已启用|已停用" lay-filter = "enableDemo" {{ d.enable == 1 ? '已启用': '已停用'}} >-->
-                    <!--                            </script>-->
+<!--                                                <script type="text/html" id="enable">-->
+<!--                                                    &lt;!&ndash; 这里的checked的状态只是演示 &ndash;&gt;-->
+<!--                                                    <div name = "enable" value = "{{d.enable}}" lay-skin = "switch" lay-text = "已启用|已停用" lay-filter = "enableDemo" {{ d.enable == 1 ? '已启用': '已停用'}} >-->
+<!--                                                </script>-->
 <!--                    <script type="text/html" id="switchTpl">-->
 <!--                        &lt;!&ndash; 这里的 checked 的状态只是演示 &ndash;&gt;-->
 <!--                        <input type="checkbox" name="sex" value="{{d.id}}" lay-skin="switch" lay-text="女|男" lay-filter="sexDemo" {{ d.id == 10003 ? 'checked' : '' }}>-->
@@ -89,7 +89,8 @@
 
                     <script type="text/html" id="switchTpl">
                         <!-- 这里的 checked 的状态只是演示 -->
-                        <input type="checkbox" name="enable" value="{{d.id}}" lay-skin="switch" lay-text="已启用|已停用" lay-filter="enableDemo" {{ d.id == 1 ? 'checked' : '' }}>
+                        <input type="checkbox" name="enable" value="{{d.id}}" lay-skin="switch" lay-text="已启用|已停用"
+                               lay-filter="enableDemo" {{ d.enable== 1 ? 'checked' : '' }}>
                     </script>
                 </div>
             </div>

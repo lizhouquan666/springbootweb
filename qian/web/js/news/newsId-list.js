@@ -3,7 +3,7 @@ $(function () {
 });
 
 function findNewsList() {
-    let res = myAjax("/back/newsType/findAll", {enable: 1}, 'get');
+    let res = myAjax("http://localhost:8080/news/findNewId", {enable: 1}, 'get');
 //    需要对select赋值
     setNewsList(res.data);
 }

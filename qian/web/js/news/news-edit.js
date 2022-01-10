@@ -2,7 +2,7 @@ let layedit;
 let index;
 $(function () {
     let id = sessionStorage.getItem("newsId");
-    let res = myAjax("/back/news/findById", {id: id}, "get");
+    let res = myAjax("http://localhost:8080/news/findById", {id: id}, "get");
     setProductData(res.data);
 });
 layui.use(['layedit', 'upload', 'element', 'form', 'layer', 'jquery', 'laydate'],
@@ -19,8 +19,12 @@ layui.use(['layedit', 'upload', 'element', 'form', 'layer', 'jquery', 'laydate']
 
         layedit.set({
             uploadImage: {
-                url: '/upload' //接口url
+                url: 'http://localhost:8080/upload' //接口url
                 , type: '' //默认post
+                , crossDomain:true,
+                xhrFields: {
+                    withCredentials: true
+                }
             }
         });
         index = layedit.build('demo'); //建立编辑器
@@ -28,7 +32,11 @@ layui.use(['layedit', 'upload', 'element', 'form', 'layer', 'jquery', 'laydate']
         //常规使用 - 普通图片上传
         var uploadInst = upload.render({
             elem: '#test1'
-            , url: '/upload'//后台访问的地址，需要将文件传到服务器，
+            , url: 'http://localhost:8080/upload'//后台访问的地址，需要将文件传到服务器，
+            , crossDomain:true,
+            xhrFields: {
+                withCredentials: true
+            }
             , before: function (obj) {
                 //预读本地文件示例，不支持ie8
                 // 将上传的图片预览到下面的图片框
@@ -60,7 +68,7 @@ layui.use(['layedit', 'upload', 'element', 'form', 'layer', 'jquery', 'laydate']
                 data.content = layedit.getContent(index);
                 data.id=sessionStorage.getItem("newsId");
                 console.log(data);
-                let res = myAjax("/back/news/update", data);
+                let res = myAjax("http://localhost:8080/news/update", data);
                 console.log(res);
                 if (res != undefined && res.count == 1) {
                     layer.alert("更新成功", {
@@ -85,9 +93,11 @@ function setProductData(data) {
     layui.use(['layedit', 'upload', 'element', 'form', 'layer', 'jquery', 'laydate'],
         function () {
             $ = layui.jquery;
-            var form = layui.form,
-                layer = layui.layer
+            var form = layui.form
+                , layer = layui.layer
+                ,layedit = layui.layedit
                 , laydate = layui.laydate;
+
             $("#name").val(data.name);
             $("#newsTypeName").val(data.news_Id);
             $("#demo1").attr("src",data.imgHref);

@@ -177,6 +177,10 @@ layui.use('table', function () {
             url: "http://localhost:8080/user/enable",
             type: 'get',
             data: data,
+            crossDomain:true,
+            xhrFields: {
+                withCredentials: true
+            },
             // async: false,
             dataType: 'json',
             success: function (data) {

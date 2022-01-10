@@ -4,14 +4,19 @@ layui.use(['layedit','upload', 'element','form', 'layer', 'jquery', 'laydate'],
         var form = layui.form
             ,element = layui.element
             ,upload = layui.upload
-        layer = layui.layer
+            ,layer = layui.layer
             , laydate = layui.laydate;
 
         let layedit = layui.layedit;
 
         layedit.set({
             uploadImage: {
-                url: '/upload' //接口url
+                //接口url
+                url: 'http://localhost:8080/upload',
+                crossDomain:true,
+                xhrFields: {
+                    withCredentials: true
+                }
                 , type: '' //默认post
             }
         });
@@ -20,7 +25,12 @@ layui.use(['layedit','upload', 'element','form', 'layer', 'jquery', 'laydate'],
         //常规使用 - 普通图片上传
         var uploadInst = upload.render( {
             elem: '#test1'
-            ,url: '/upload'//后台访问的地址，需要将文件传到服务器，
+            //后台访问的地址，需要将文件传到服务器，
+            ,url: 'http://localhost:8080/upload'
+            , crossDomain:true
+            , xhrFields: {
+                withCredentials: true
+            }
             ,before: function(obj){
                 //预读本地文件示例，不支持ie8
                 // 将上传的图片预览到下面的图片框
@@ -51,7 +61,7 @@ layui.use(['layedit','upload', 'element','form', 'layer', 'jquery', 'laydate'],
                 data.imgHref = sessionStorage.getItem("productImgHref");
                 data.content = layedit.getContent(index);
                 console.log(data);
-                let res = myAjax("/back/product/add", data);
+                let res = myAjax("http://localhost:8080/product/add", data);
 
 
                 console.log(res);

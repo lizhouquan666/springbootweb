@@ -11,8 +11,12 @@ layui.use(['layedit','upload', 'element','form', 'layer', 'jquery', 'laydate'],
 
         layedit.set({
             uploadImage: {
-                url: '/upload' //接口url
+                url: 'http://localhost:8080/upload' //接口url
                 , type: '' //默认post
+                , crossDomain:true,
+                xhrFields: {
+                    withCredentials: true
+                }
             }
         });
         let index = layedit.build('demo'); //建立编辑器
@@ -20,7 +24,11 @@ layui.use(['layedit','upload', 'element','form', 'layer', 'jquery', 'laydate'],
         //常规使用 - 普通图片上传
         var uploadInst = upload.render( {
             elem: '#test1'
-            ,url: '/upload'//后台访问的地址，需要将文件传到服务器，
+            ,url: 'http://localhost:8080/upload'//后台访问的地址，需要将文件传到服务器，
+            , crossDomain:true,
+            xhrFields: {
+                withCredentials: true
+            }
             ,before: function(obj){
                 //预读本地文件示例，不支持ie8
                 // 将上传的图片预览到下面的图片框
@@ -51,7 +59,7 @@ layui.use(['layedit','upload', 'element','form', 'layer', 'jquery', 'laydate'],
                 // data.imgHref = sessionStorage.getItem("productImgHref");
                 data.content = layedit.getContent(index);
                 console.log(data);
-                let res = myAjax("/back/news/add", data);
+                let res = myAjax("http://localhost:8080/news/add", data);
 
 
                 console.log(res);

@@ -9,14 +9,14 @@ layui.use(['table'], function () {
         var data = obj.data;
         if (obj.event === 'del') {
             layer.confirm('真的删除行么', function (index) {
-                let res = myAjax("/back/product/delete", {id: data.id});
+                let res = myAjax("http://localhost:8080/product/delete", {id: data.id});
                 console.log(res);
                 if (res.count == 1) {
                     obj.del();
                     layer.close(index);
-                    layui.msg("删除成功");
+                    layer.msg("删除成功");
                 } else {
-                    layui.msg("删除失败");
+                    layer.msg("删除失败");
                 }
 
             });
@@ -36,8 +36,29 @@ layui.use(['table'], function () {
             page(data);
             return false;
         });
-});
+    form.on('switch(enableDemo)', function () {
+        let data={
+            id:this.value
+        };
+        console.log(data);
+        $.ajax({
+            url: "http://localhost:8080/product/enable",
+            type: 'get',
+            data: data,
+            crossDomain:true,
+            xhrFields: {
+                withCredentials: true
+            },
+            // async: false,
+            dataType: 'json',
+            success: function (data) {
+                console.log(data);
 
+            }
+        });
+    });
+});
+//图片问题
 function page(data) {
     // console.log(data);
     layui.use(['table'], function () {
@@ -45,7 +66,7 @@ function page(data) {
             , form = layui.form;
         table.render({
             elem: '#test'
-            , url: '/back/product/findAll'
+            , url: 'http://localhost:8080/product/findAll'
             , cellMinWidth: 80
             , where: data//传递到后台的值
             , cols: [[
@@ -55,8 +76,20 @@ function page(data) {
                 , {field: 'normalPrice', title: '正常价'}
                 , {field: 'serviceTypeName', title: '律师服务类型'}
                 , {field: 'content', title: '详细描述'}
-                , {field: 'imgHref', title: '产品图片', minWidth: 120, sort: true, templet: '<div><img src="{{d.imgHref}}" width="30" height="30" ></div>'}
-                ,{field:'enable', title:'是否启用', width:85, templet: '#switchTpl', unresize: true}
+                , {
+                    field: 'imgHref', title: '产品图片', width: 130, style: 'height:100px;padding:0',
+                    templet: function (data) {
+                        let html = "";
+                        if (data.imgHref != null) {
+                            html = "<img alt='图片' src='" + data.imgHref + "' style='height: 30px; width: 30px;' onclick=''/>";
+                        } else {
+                            html = "<i class=\"layui-icon layui-icon-face-cry\" style=\"font-size: 25px; color: #ff0008;\"></i>";
+                        }
+                        return html;
+                    }
+                }
+                // , {field: 'imgHref', title: '产品图片', minWidth: 120, sort: true, templet: '<div><img src="{{d.imgHref}}" width="30" height="30" ></div>'}
+                , {field: 'enable', title: '状态', templet: '#switchTpl', sort: true}
                 , {fixed: 'right', title: '操作', width: 200, align: 'center', toolbar: '#barDemo'}
             ]]
             , page: true

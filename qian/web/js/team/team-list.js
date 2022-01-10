@@ -9,14 +9,14 @@ layui.use(['table'], function () {
         var data = obj.data;
         if (obj.event === 'del') {
             layer.confirm('真的删除行么', function (index) {
-                let res = myAjax("/back/team/delete", {id: data.id});
+                let res = myAjax("http://localhost:8080/team/delete", {id: data.id});
                 console.log(res);
                 if (res.count == 1) {
                     obj.del();
                     layer.close(index);
-                    layui.msg("删除成功");
+                    layer.msg("删除成功");
                 } else {
-                    layui.msg("删除失败");
+                    layer.msg("删除失败");
                 }
 
             });
@@ -45,7 +45,7 @@ function page(data) {
             , form = layui.form;
         table.render({
             elem: '#test'
-            , url: '/back/team/findAll'
+            , url: 'http://localhost:8080/team/findAll'
             , cellMinWidth: 80
             , where: data//传递到后台的值
             , cols: [[
