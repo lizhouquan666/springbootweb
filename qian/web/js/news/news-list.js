@@ -66,7 +66,6 @@ function page(data) {
                 , {fixed: 'right', title: '操作', width: 200, align: 'center', toolbar: '#barDemo'}
             ]]
             , page: true
-
         });
     });
 }
