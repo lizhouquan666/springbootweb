@@ -4,16 +4,7 @@
 // });
 //----------------------------------------------------------------------------
 // function findAll(data) {
-//     $.ajax({
-//         url: 'http://localhost:8080/user/findAll',
-//         data: data,
-//         type: 'get',
-//         dataType: 'json',
-//         success: function (res) {
-//             console.log(res);
-//             setList(res.data);
-//         }
-//     });
+~   ``
 // }
 //
 // function setList(data) {

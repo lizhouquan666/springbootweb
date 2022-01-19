@@ -67,8 +67,10 @@ function page(data) {
         table.render({
             elem: '#test'
             , url: 'http://localhost:8080/product/findAll'
+            , method: 'get'
             , cellMinWidth: 80
             , where: data//传递到后台的值
+            , page: true
             , cols: [[
                 {field: 'id', title: 'ID', width: 100, unresize: true, sort: true}
                 , {field: 'name', title: '律师服务产品名称'}
@@ -92,7 +94,7 @@ function page(data) {
                 , {field: 'enable', title: '状态', templet: '#switchTpl', sort: true}
                 , {fixed: 'right', title: '操作', width: 200, align: 'center', toolbar: '#barDemo'}
             ]]
-            , page: true
+
         });
     });
 }
