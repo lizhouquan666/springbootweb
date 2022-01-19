@@ -65,7 +65,6 @@ function page(data) {
                 ,{field:'enable', title:'是否启用', width:85, templet: '#switchTpl', unresize: true}
                 , {fixed: 'right', title: '操作', width: 200, align: 'center', toolbar: '#barDemo'}
             ]]
-
             , page: true
         });
     });
