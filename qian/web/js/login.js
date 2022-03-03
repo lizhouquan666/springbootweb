@@ -45,11 +45,18 @@ $(function () { //代表页面加载完成执行里面的代码
                     if (data.data === 'codeErr') {
                         layer.msg('验证码不正确');
                     }
-                    if (data.data === 'error') {
+                    if (data.message === 'failed') {
                         layer.msg('用户名或者密码不正确');
                     }
-                    if (data.data === 'success') {
+                    if (data.message === 'success') {
                         layer.msg('登陆成功，即将跳转到后台管理页面', function () {
+                            tokenHeader=data.data.tokenHead;
+                            access_token=data.data.access_token;
+                            sessionStorage.setItem("tokenHeader", tokenHeader);
+                            sessionStorage.setItem("access_token", access_token);
+                            console.log(tokenHeader);
+                            console.log(access_token);
+
                             //页面之间相互传值
                             //1.get方式，url携带参数    loca
                             //

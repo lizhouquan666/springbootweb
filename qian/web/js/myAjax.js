@@ -13,6 +13,11 @@ function myAjax(url, data, type) {
         type: type == null ? 'post' : 'get',
         data: data,
         crossDomain:true,
+        headers:{
+            "Authorization":sessionStorage.getItem("tokenHeader")
+                +" "+
+                sessionStorage.getItem("access_token")
+        },
         xhrFields: {
             withCredentials: true
         },

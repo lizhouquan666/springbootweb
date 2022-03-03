@@ -22,6 +22,11 @@ layui.use(['layedit', 'upload', 'element', 'form', 'layer', 'jquery', 'laydate']
                 url: 'http://localhost:8080/upload' //接口url
                 , type: '' //默认post
                 , crossDomain:true,
+                headers:{
+                    "Authorization":sessionStorage.getItem("tokenHeader")
+                        +" "+
+                        sessionStorage.getItem("access_token")
+                },
                 xhrFields: {
                     withCredentials: true
                 }

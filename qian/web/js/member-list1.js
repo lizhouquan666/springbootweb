@@ -178,6 +178,11 @@ layui.use('table', function () {
             type: 'get',
             data: data,
             crossDomain:true,
+            headers:{
+                "Authorization":sessionStorage.getItem("tokenHeader")
+                    +" "+
+                    sessionStorage.getItem("access_token")
+            },
             xhrFields: {
                 withCredentials: true
             },
@@ -199,6 +204,7 @@ function page(data) {
         table.render({
             elem: '#test'
             , url: 'http://localhost:8080/user/findAll'
+
             , method: 'get'
             , cellMinWidth: 80
             , where: data
