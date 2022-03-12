@@ -13,6 +13,7 @@ layui.use(['form', 'layer', 'jquery', 'laydate'],
         form.verify({
             username: [/[a-zA-Z]\w{5,15}/, "以字母开头的后面跟5到15个字母，数字，下划线"],
             password: [/(.+){6,12}$/, '密码必须6到12位'],
+            phone:[/^1(3\d|4[5-9]|5[0-35-9]|6[567]|7[0-8]|8\d|9[0-35-9])\d{8}$/,"请输入正确的手机号"],
             repass: function (value) {
                 if ($('#L_pass').val() != $('#L_repass').val()) {
                     return '两次密码不一致';
@@ -41,7 +42,7 @@ layui.use(['form', 'layer', 'jquery', 'laydate'],
                 data.hobby =arr.toLocaleString();
                 console.log(data);
 
-                let res = myAjax("http://localhost:8080/user/add", data);
+                let res = myAjax("http://localhost:11111/api/u/user/add", data);
                 console.log(res);
 
                 if (res != undefined && res.count == 1) {

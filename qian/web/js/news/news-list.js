@@ -11,7 +11,7 @@ layui.use(['table'], function () {
         var data = obj.data;
         if (obj.event === 'del') {
             layer.confirm('真的删除行么', function (index) {
-        let res = myAjax("http://localhost:8080/news/delete", {id: data.id});
+        let res = myAjax("http://localhost:11111/api/n/news/delete", {id: data.id});
         console.log(res);
         if (res.count == 1) {
             obj.del();
@@ -49,7 +49,7 @@ function page(data) {
         console.log(data);
         table.render({
             elem: '#test'
-            , url: 'http://localhost:8080/news/findAll'
+            , url: 'http://localhost:11111/api/n/news/findAll'
             , cellMinWidth: 80
             // ,async:false
             // ,xhrFields: {

@@ -9,7 +9,7 @@ layui.use(['table'], function () {
         var data = obj.data;
         if (obj.event === 'del') {
             layer.confirm('真的删除行么', function (index) {
-                let res = myAjax("http://localhost:8080/product/delete", {id: data.id});
+                let res = myAjax("http://localhost:11111/api/p/product/delete", {id: data.id});
                 console.log(res);
                 if (res.count == 1) {
                     obj.del();
@@ -42,7 +42,7 @@ layui.use(['table'], function () {
         };
         console.log(data);
         $.ajax({
-            url: "http://localhost:8080/product/enable",
+            url: "http://localhost:11111/api/p/product/enable",
             type: 'get',
             data: data,
             crossDomain:true,
@@ -66,7 +66,7 @@ function page(data) {
             , form = layui.form;
         table.render({
             elem: '#test'
-            , url: 'http://localhost:8080/product/findAll'
+            , url: 'http://localhost:11111/api/p/product/findAll'
             , method: 'get'
             , cellMinWidth: 80
             , where: data//传递到后台的值

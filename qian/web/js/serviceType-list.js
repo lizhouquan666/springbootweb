@@ -3,7 +3,7 @@ $(function () {
 });
 
 function findCuisineList() {
-    let res = myAjax("http://localhost:8080/product/findServiceType", {enable: 1}, 'get');
+    let res = myAjax("http://localhost:11111/api/p/product/findServiceType", {enable: 1}, 'get');
 //    需要对select赋值
     setCuisineList(res.data);
 }

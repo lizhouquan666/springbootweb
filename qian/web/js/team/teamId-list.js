@@ -3,7 +3,7 @@ $(function () {
 });
 
 function findTeamList() {
-    let res = myAjax("http://localhost:8080/team/findTeamId", {enable: 1}, 'get');
+    let res = myAjax("http://localhost:11111/api/t/team/findTeamId", {enable: 1}, 'get');
 //    需要对select赋值
     setTeamList(res.data);
 }

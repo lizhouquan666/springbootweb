@@ -11,7 +11,7 @@ layui.use(['layedit','upload', 'element','form', 'layer', 'jquery', 'laydate'],
 
         layedit.set({
             uploadImage: {
-                url: 'http://localhost:8080/upload' //接口url
+                url: 'http://localhost:11111/api/upload/upload' //接口url
                 , type: '' //默认post
                 , crossDomain:true,
                 xhrFields: {
@@ -24,7 +24,7 @@ layui.use(['layedit','upload', 'element','form', 'layer', 'jquery', 'laydate'],
         //常规使用 - 普通图片上传
         var uploadInst = upload.render( {
             elem: '#test1'
-            ,url: 'http://localhost:8080/upload'//后台访问的地址，需要将文件传到服务器，
+            ,url: 'http://localhost:11111/api/upload/upload'//后台访问的地址，需要将文件传到服务器，
             , crossDomain:true,
             xhrFields: {
                 withCredentials: true
@@ -59,7 +59,7 @@ layui.use(['layedit','upload', 'element','form', 'layer', 'jquery', 'laydate'],
                 data.imgHref = sessionStorage.getItem("teamImgHref");
                 data.content = layedit.getContent(index);
                 console.log(data);
-                let res = myAjax("http://localhost:8080/team/add", data);
+                let res = myAjax("http://localhost:11111/api/t/team/add", data);
 
 
                 console.log(res);

@@ -2,7 +2,7 @@ let index;
 let layedit;
 $(function () {
     let id = sessionStorage.getItem("productId");
-    let res = myAjax("http://localhost:8080/product/findById", {id: id}, "get");
+    let res = myAjax("http://localhost:11111/api/p/product/findById", {id: id}, "get");
     setProductData(res.data);
 });
 layui.use(['layedit', 'upload', 'element', 'form', 'layer', 'jquery', 'laydate'],
@@ -19,7 +19,7 @@ layui.use(['layedit', 'upload', 'element', 'form', 'layer', 'jquery', 'laydate']
 
         layedit.set({
             uploadImage: {
-                url: 'http://localhost:8080/upload' //接口url
+                url: 'http://localhost:11111/api/upload/upload' //接口url
                 , type: '' //默认post
                 , crossDomain:true,
                 headers:{
@@ -37,7 +37,7 @@ layui.use(['layedit', 'upload', 'element', 'form', 'layer', 'jquery', 'laydate']
         //常规使用 - 普通图片上传
         var uploadInst = upload.render({
             elem: '#test1'
-            , url: 'http://localhost:8080/upload'//后台访问的地址，需要将文件传到服务器，
+            , url: 'http://localhost:11111/api/upload/upload'//后台访问的地址，需要将文件传到服务器，
                 , crossDomain:true,
                 xhrFields: {
                     withCredentials: true
@@ -63,6 +63,11 @@ layui.use(['layedit', 'upload', 'element', 'form', 'layer', 'jquery', 'laydate']
 
 
         });
+        //自定义验证规则
+        form.verify({
+            price: [/(^[1-9]\d*(\.\d{1,2})?$)|(^0(\.\d{1,2})?$)/, '请输入正确的产品价格:整数或者保留两位小数'],
+            normalPrice: [/(^[1-9]\d*(\.\d{1,2})?$)|(^0(\.\d{1,2})?$)/, '请输入正确的产品价格:整数或者保留两位小数'],
+        });
         //监听提交
         form.on('submit(update)',
             function (data) {
@@ -73,8 +78,9 @@ layui.use(['layedit', 'upload', 'element', 'form', 'layer', 'jquery', 'laydate']
                 data.imgHref = sessionStorage.getItem("productImgHref");
                 data.content = layedit.getContent(index);
                 data.id=sessionStorage.getItem("productId");
+                data.service_id=data.serviceType;
                 console.log(data);
-                let res = myAjax("http://localhost:8080/product/update", data);
+                let res = myAjax("http://localhost:11111/api/p/product/update", data);
                 console.log(res);
                 if (res != undefined && res.count == 1) {
                     layer.alert("更新成功", {

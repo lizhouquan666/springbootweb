@@ -2,7 +2,7 @@ let layedit;
 let index;
 $(function () {
     let id = sessionStorage.getItem("teamId");
-    let res = myAjax("http://localhost:8080/team/findById", {id: id}, "get");
+    let res = myAjax("http://localhost:11111/api/t/team/findById", {id: id}, "get");
     setTeamData(res.data);
 });
 layui.use(['layedit', 'upload', 'element', 'form', 'layer', 'jquery', 'laydate'],
@@ -19,7 +19,7 @@ layui.use(['layedit', 'upload', 'element', 'form', 'layer', 'jquery', 'laydate']
 
         layedit.set({
             uploadImage: {
-                url: 'http://localhost:8080/upload' //接口url
+                url: 'http://localhost:11111/api/upload/upload' //接口url
                 , type: '' //默认post
                 , crossDomain:true,
                 xhrFields: {
@@ -32,7 +32,7 @@ layui.use(['layedit', 'upload', 'element', 'form', 'layer', 'jquery', 'laydate']
         //常规使用 - 普通图片上传
         var uploadInst = upload.render({
             elem: '#test1'
-            , url: 'http://localhost:8080/upload'//后台访问的地址，需要将文件传到服务器，
+            , url: 'http://localhost:11111/api/upload/upload'//后台访问的地址，需要将文件传到服务器，
             , crossDomain:true,
             xhrFields: {
                 withCredentials: true
@@ -68,7 +68,7 @@ layui.use(['layedit', 'upload', 'element', 'form', 'layer', 'jquery', 'laydate']
                 data.content = layedit.getContent(index);
                 data.id=sessionStorage.getItem("teamId");
                 console.log(data);
-                let res = myAjax("http://localhost:8080/team/update", data);
+                let res = myAjax("http://localhost:11111/api/t/team/update", data);
                 console.log(res);
                 if (res != undefined && res.count == 1) {
                     layer.alert("更新成功", {

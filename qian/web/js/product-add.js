@@ -12,7 +12,7 @@ layui.use(['layedit','upload', 'element','form', 'layer', 'jquery', 'laydate'],
         layedit.set({
             uploadImage: {
                 //接口url
-                url: 'http://localhost:8080/upload',
+                url: 'http://localhost:11111/api/upload/upload',
                 crossDomain:true,
                 headers:{
                     "Authorization":sessionStorage.getItem("tokenHeader")
@@ -31,7 +31,7 @@ layui.use(['layedit','upload', 'element','form', 'layer', 'jquery', 'laydate'],
         var uploadInst = upload.render( {
             elem: '#test1'
             //后台访问的地址，需要将文件传到服务器，
-            ,url: 'http://localhost:8080/upload'
+            ,url: 'http://localhost:11111/api/upload/upload'
             , crossDomain:true
             , xhrFields: {
                 withCredentials: true
@@ -57,6 +57,11 @@ layui.use(['layedit','upload', 'element','form', 'layer', 'jquery', 'laydate'],
 
 
         });
+        //自定义验证规则
+        form.verify({
+            price: [/(^[1-9]\d*(\.\d{1,2})?$)|(^0(\.\d{1,2})?$)/, '请输入正确的产品价格:整数或者保留两位小数'],
+            normalPrice: [/(^[1-9]\d*(\.\d{1,2})?$)|(^0(\.\d{1,2})?$)/, '请输入正确的产品价格:整数或者保留两位小数'],
+        });
 
 
         //监听提交
@@ -65,8 +70,9 @@ layui.use(['layedit','upload', 'element','form', 'layer', 'jquery', 'laydate'],
                 data = data.field;
                 data.imgHref = sessionStorage.getItem("productImgHref");
                 data.content = layedit.getContent(index);
+                data.service_id=data.serviceType;
                 console.log(data);
-                let res = myAjax("http://localhost:8080/product/add", data);
+                let res = myAjax("http://localhost:11111/api/p/product/add", data);
 
 
                 console.log(res);

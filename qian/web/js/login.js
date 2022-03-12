@@ -30,7 +30,7 @@ $(function () { //代表页面加载完成执行里面的代码
             //将数据传递给Java后台：
             // 需要用到ajax
             $.ajax({
-                url: 'http://localhost:8080/user/login',//对应Java的注解地址
+                url: 'http://win10-2018bmpka:11111/api/a/user/login',//对应Java的注解地址
                 data: JSON.stringify(data.field),//传递给Java的数据
                 contentType: "application/json;charset=UTF-8",
                 crossDomain:true,
@@ -101,5 +101,5 @@ function freshCode(obj) {
     // $("#code").attr("src","/code?ie="+date.getMilliseconds());
     // 如果没有id呢？
     // obj.src="/code?ie="+date.getMilliseconds();
-    $(obj).attr("src", "http://localhost:8080/code/checkCode?ie=" + date.getMilliseconds());
+    $(obj).attr("src", "http://win10-2018bmpka:11111/api/code/code/checkCode?ie=" + date.getMilliseconds());
 }

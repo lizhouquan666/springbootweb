@@ -9,6 +9,17 @@ layui.use(['form', 'layer', 'jquery', 'laydate'],
             elem: '#birthday',
             trigger: 'click'
         });
+        //自定义验证规则
+        form.verify({
+            username: [/[a-zA-Z]\w{5,15}/, "以字母开头的后面跟5到15个字母，数字，下划线"],
+            password: [/(.+){6,12}$/, '密码必须6到12位'],
+            phone:[/^1(3\d|4[5-9]|5[0-35-9]|6[567]|7[0-8]|8\d|9[0-35-9])\d{8}$/,"请输入正确的手机号"],
+            repass: function (value) {
+                if ($('#L_pass').val() != $('#L_repass').val()) {
+                    return '两次密码不一致';
+                }
+            }
+        });
 
         //监听提交
         form.on('submit(edit)',
@@ -31,7 +42,7 @@ layui.use(['form', 'layer', 'jquery', 'laydate'],
                 data.hobby =arr.toLocaleString();
                 data.id=sessionStorage.getItem("userId");
                 console.log(data);
-                let res = myAjax("http://localhost:8080/user/update", data);
+                let res = myAjax("http://localhost:11111/api/u/user/update", data);
                 console.log(res);
 
                 if (res != undefined && res.count == 1) {
@@ -56,7 +67,7 @@ layui.use(['form', 'layer', 'jquery', 'laydate'],
     });
 $(function () {
     let id = sessionStorage.getItem("userId");
-    let res = myAjax("http://localhost:8080/user/findById", {id: id}, 'get');
+    let res = myAjax("http://localhost:11111/api/u/user/findById", {id: id}, 'get');
 //   将查询出来的数据进行赋值填充
     setData(res.data);
 });
@@ -68,8 +79,9 @@ function setData(data) {
 //     document.getElementsByName("username")[0].innerText=data.username;
 //     document.getElementById("username").innerText=data.username;
     $("#username").val(data.username);
-    $("#password").val(data.password);
+    // $("#password").val(data.password);
     // $("input[name=username]")
+    $("#phone").val(data.phone);
     $("#email").val(data.email);
     $("#birthday").val(data.birthday);
     $("#sex").val(data.sex);
