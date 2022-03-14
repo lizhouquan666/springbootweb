@@ -37,6 +37,7 @@ layui.use(['form', 'layer', 'jquery', 'laydate'],
                     arr.push($(this).attr("title")) ;
                     // }
                 });
+
                 console.log(arr)
                 data.hobby =arr.toLocaleString();
                 data.id=sessionStorage.getItem("userId");
