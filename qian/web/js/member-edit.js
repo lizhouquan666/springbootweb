@@ -20,8 +20,6 @@ layui.use(['form', 'layer', 'jquery', 'laydate'],
                 }
             }
         });
-
-
         //监听提交
         form.on('submit(edit)',
             function (data) {
