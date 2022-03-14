@@ -50,7 +50,6 @@ layui.use(['form', 'layer', 'jquery', 'laydate'],
                         },
                         function () {
                             //关闭当前frame
-
                             xadmin.close();
 
                             // 可以对父窗口进行刷新 && res.count == 1
